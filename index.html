@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            padding: 50px;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #fff, 0 0 10px #ff007f, 0 0 15px #ff007f; }
+            100% { text-shadow: 0 0 10px #fff, 0 0 20px #ff007f, 0 0 30px #ff007f; }
+        }
+        #valentine-message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
+            animation: popIn 1s ease-in-out forwards;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .heart-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .heart-shape {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em; /* Adjusted font size for better visibility */
+            color: red;
+            padding: 20px 40px;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.7);
+            transform: rotate(-10deg);
+            animation: heartbeat 1.5s infinite alternate, floaty 3s infinite ease-in-out;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1) rotate(-10deg); }
+            100% { transform: scale(1.1) rotate(-10deg); }
+        }
+        @keyframes floaty {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .sparkles {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            box-shadow: 0 0 10px white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite linear;
+        }
+        @keyframes sparkle {
+            0% { transform: scale(0.5) translateY(0); opacity: 1; }
+            100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+        }
+        input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: #ff007f;
+            border: none;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        button:hover {
+            background: #ff4d94;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Happy Valentine's Day! 💖</h1>
+    <p>Enter your name to receive a special message:</p>
+    <input type="text" id="name" placeholder="Your Name">
+    <button onclick="showMessage()">Get Your Message</button>
+    <div id="valentine-message"></div>
+    
+    <script>
+        function showMessage() {
+            const name = document.getElementById("name").value;
+            if (name.trim() === "") {
+                alert("Please enter your name!");
+                return;
+            }
+            const quotes = [
+            "You are my today and all of my tomorrows. Happy Valentine's Day!",
+            "Every moment with you is a moment I cherish. Happy Valentine's Day!",
+            "In your love, I've found my forever home. Happy Valentine's Day!",
+            "You are the reason I believe in love. Happy Valentine’s!",
+            "The best part of every day is being with you. Happy Valentine’s Day!",
+            "You fill my heart with love every day, but especially today. Happy Valentine’s!",
+            "I didn’t know what true love was until I met you. Happy Valentine’s Day!",
+            "You're the love of my life, and today I get to tell you just how much you mean to me. Happy Valentine's!",
+            "Your love is the greatest gift I’ve ever received. Happy Valentine’s Day!",
+            "To the one who holds my heart, Happy Valentine’s Day!",
+            "With you, every day feels like a special day. Happy Valentine’s!",
+            "The more I see you, the more I fall in love with you. Happy Valentine’s!",
+            "No one else could ever take your place in my heart. Happy Valentine’s Day!",
+            "You are my forever. Happy Valentine’s Day!",
+            "You make my heart race every time I see you. Happy Valentine’s Day!",
+            "I don’t need chocolates or roses when I have you. Happy Valentine’s!",
+            "Happy Valentine’s Day to the one who makes life so sweet.",
+            "You are the reason I smile every day. Happy Valentine’s!",
+            "I feel so lucky to be yours. Happy Valentine’s Day!",
+            "Your love completes me in ways I didn’t even know I needed. Happy Valentine’s Day!",
+            "Together is my favorite place to be. Happy Valentine’s!",
+            "Every love story is beautiful, but ours is my favorite. Happy Valentine’s Day!",
+            "Every second spent with you is a moment of joy. Happy Valentine’s Day!",
+            "You are my sunshine on the stormiest days. Happy Valentine’s Day!",
+            "You are my today, my tomorrow, and my forever. Happy Valentine’s!",
+            "Thank you for being the love of my life. Happy Valentine’s!",
+            "To the love of my life, Happy Valentine’s Day!",
+            "In a world full of temporary things, you are my forever. Happy Valentine’s!",
+            "You make my heart skip a beat. Happy Valentine’s Day!",
+            "I am so grateful to have you in my life. Happy Valentine’s Day!",
+            "You are everything I never knew I needed. Happy Valentine’s!",
+            "You’re the most precious part of my every day. Happy Valentine’s Day!",
+            "Happy Valentine’s to the one who fills my heart with love.",
+            "My heart is yours today and always. Happy Valentine’s Day!",
+            "With every kiss, I fall deeper in love. Happy Valentine’s Day!",
+            "You’re the only person I want to be with, today and forever. Happy Valentine’s!",
+            "You are my favorite feeling in the world. Happy Valentine’s Day!",
+            "Today is the perfect day to tell you how much I love you. Happy Valentine’s!",
+            "You make my world a better place. Happy Valentine’s Day!",
+            "You are my heart’s true desire. Happy Valentine’s!",
+            "I’ll love you today, tomorrow, and forever. Happy Valentine’s Day!",
+            "You are my forever and always. Happy Valentine’s Day!",
+            "Every day feels like a Valentine’s Day with you. Happy Valentine’s!",
+            "You are the reason I believe in love at first sight. Happy Valentine’s!",
+            "You're my dream come true. Happy Valentine’s Day!",
+            "Every day spent with you is my favorite day. Happy Valentine’s!",
+            "Being in love with you is the greatest adventure. Happy Valentine’s Day!",
+            "You are my heart’s home. Happy Valentine’s!",
+            "With you, every day feels like Valentine’s Day. Happy Love Day!",
+            "You are the most beautiful part of every day. Happy Valentine’s!",
+            "I choose you today and always. Happy Valentine’s Day!",
+            "No matter where life takes us, you’ll always be my forever. Happy Valentine’s!",
+            "You’ve stolen my heart, and I don’t want it back. Happy Valentine’s Day!",
+            "Happy Valentine’s to the one who makes my heart sing.",
+            "Every moment with you is a gift. Happy Valentine’s Day!",
+            "You’re the reason I smile. Happy Valentine’s!",
+            "I’m lucky to have you as mine. Happy Valentine’s Day!",
+            "My heart belongs to you, always. Happy Valentine’s Day!",
+            "Your love is my favorite part of every day. Happy Valentine’s!",
+            "You're the light of my life. Happy Valentine’s Day!",
+            "I am so in love with you. Happy Valentine’s!",
+            "Love you more than words can express. Happy Valentine’s Day!",
+            "With you, everything feels right. Happy Valentine’s!",
+            "Your love is the greatest treasure I could ever receive. Happy Valentine’s!",
+            "Happy Valentine’s to the one who makes every moment better.",
+            "You are my happy place. Happy Valentine’s Day!",
+            "My heart beats for you. Happy Valentine’s!",
+            "You are my world. Happy Valentine’s Day!",
+            "You are my forever Valentine. Happy Love Day!",
+            "I fall deeper in love with you every day. Happy Valentine’s!",
+            "You make my life complete. Happy Valentine’s Day!",
+            "Your love is my safe place. Happy Valentine’s!",
+            "Today is all about you and how much I love you. Happy Valentine’s Day!",
+            "I can’t imagine my life without you. Happy Valentine’s!",
+            "You make everything in life sweeter. Happy Valentine’s Day!",
+            "My love for you is endless. Happy Valentine’s!",
+            "You are my everything, today and always. Happy Valentine’s!",
+            "You are the reason my heart is full of love. Happy Valentine’s!",
+            "I’ll love you more with each passing day. Happy Valentine’s!",
+            "You make life more beautiful. Happy Valentine’s Day!",
+            "To the one who holds my heart, Happy Valentine’s!",
+            "You are the best thing that ever happened to me. Happy Valentine’s!",
+            "You make every day feel like a celebration of love. Happy Valentine’s!",
+            "Happy Valentine’s Day to the one who makes me feel so special.",
+            "I’ll love you today, tomorrow, and always. Happy Valentine’s!",
+            "You’re the one I want to spend forever with. Happy Valentine’s Day!",
+            "You're the love I’ve always dreamed of. Happy Valentine’s!",
+            "Happy Valentine’s Day to the person who fills my heart with joy!",
+            "You complete my world. Happy Valentine’s Day!",
+            "You’re my always and forever. Happy Valentine’s Day!",
+            "My heart beats for you. Happy Valentine’s Day!",
+            "With you by my side, I can do anything. Happy Valentine’s!",
+            "You make everything better. Happy Valentine’s Day!",
+            "Happy Valentine’s to the love of my life.",
+            "You are my heart’s desire. Happy Valentine’s Day!",
+            "Every moment with you is magic. Happy Valentine’s!",
+            "You make my heart smile. Happy Valentine’s Day!",
+            "You are the best part of every day. Happy Valentine’s!",
+            "With you, my heart feels at peace. Happy Valentine’s Day!",
+            "You’re the best thing that ever happened to me. Happy Valentine’s!"
+        ];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            
+            const messageDiv = document.getElementById("valentine-message");
+            messageDiv.innerHTML = `
+                <div class="heart-container">
+                    <div class="heart-shape">❤️ ${name} ❤️</div>
+                    <div style="font-size: 2em;">😊</div> <!-- Smiley face below the hearts -->
+                </div>
+                <p>${randomQuote}</p>`;
+            messageDiv.style.opacity = "1";
+            messageDiv.style.transform = "scale(1)";
+            createSparkles();
+        }
+
+        function createSparkles() {
+            setInterval(() => {
+                let sparkle = document.createElement("div");
+                sparkle.classList.add("sparkles");
+                document.body.appendChild(sparkle);
+                sparkle.style.left = `${Math.random() * 100}vw`;
+                sparkle.style.top = `${Math.random() * 100}vh`;
+                sparkle.style.animationDuration = `${1 + Math.random()}s`;
+                setTimeout(() => sparkle.remove(), 2000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
